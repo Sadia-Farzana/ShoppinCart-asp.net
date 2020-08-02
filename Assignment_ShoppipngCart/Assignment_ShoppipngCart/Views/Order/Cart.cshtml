@@ -53,7 +53,9 @@
 
 </ul>
 <h2>Cart</h2>
-<table class="table">
+
+
+<table class="table" border="1">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.ImageFile)
@@ -67,37 +69,47 @@
         <th>
             @Html.DisplayNameFor(model => model.UnitPrice)
         </th>
+
+
         <th>
-            Operation
+            @Html.DisplayNameFor(model => model.Quantity)
         </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.LongDescription)
+        </th>
+
     </tr>
     @foreach (var item in Model)
     {
+
+        <tr>
+            <td>
+                <img src="~/Content/Images/Products/@item.ImageFile" />
+            </td>
+            <td>
+                @item.Name
+            </td>
+            <td>
+                @item.ShortDescription
+            </td>
+            <td>
+                @item.UnitPrice
+            </td>
+
+            <td>
+                @item.Quantity
+            </td>
+            <td>
+                @item.LongDescription
+            </td>
+        </tr>
         Totalamount += item.Total;
-<tr>
-    <td>
-        <img src="~/Content/Images/Products/@item.ImageFile" />
-    </td>
-    <td>
-        @item.Name
-    </td>
-    <td>
-        @item.ShortDescription
-    </td>
-    <td>
-        @item.UnitPrice
-    </td>
-
-    <td>
-        @Html.ActionLink("Details", "Details", new { id = item.Name }) |
-        @Html.ActionLink("Delete", "Delete", new { id = item.Name })
-    </td>
-</tr>
-       
     }
-
-    <div>
-        <h3>Total Amount :   @Totalamount.ToString()</h3>
-    </div>
-
 </table>
+<div>
+    <h3>Total Amount :   @Totalamount.ToString()</h3>
+</div>
+
+
+
