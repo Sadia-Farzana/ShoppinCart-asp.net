@@ -1,0 +1,80 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+
+
+<style>
+    ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color:brown;
+    }
+
+    li {
+        float: left;
+    }
+
+        li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: solid;
+        }
+
+            li a:hover {
+                background-color:navajowhite;
+            }
+    .img {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 100%;
+    }
+
+    .center {
+        margin: auto;
+        width: 50%;
+        border: 1px solid orange;
+        padding: 10px;
+    }
+
+   
+
+    footer {
+        text-align: center;
+        padding: 3px;
+        color: black;
+    }
+</style>
+<body>
+    <ul>
+        <li>@Html.ActionLink("Home", "Index")</li>
+        <li>@Html.ActionLink("Order", "../Order/Order")</li>
+        <li>@Html.ActionLink("Cart", "../Order/Cart")</li>
+        <li>@Html.ActionLink("Contact Us", "Contact")</li>
+
+    </ul>
+    <br>
+    
+
+    <img class="img" src="~/Content/Images/banner.jpg" alt="Halloween" />
+
+
+    <div class="center">
+        <p style="font-size:24px">Welcome to the Halloween store</p>
+        <p>Thank you for visiting us this beautiful sunday</p>
+
+    </div>
+    <footer>
+        <p>
+            Where every day is Halloween!
+        </p>
+    </footer>
+
+</body>
+
