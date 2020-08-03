@@ -1,0 +1,74 @@
+﻿@model Assignment_LOGIN.Models.Login
+
+@{
+    ViewBag.Title = "Signup";
+}
+<style>
+    ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: dimgray;
+    }
+
+    li {
+        float: left;
+    }
+
+        li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 16px 18px;
+            text-decoration: solid;
+        }
+
+            li a:hover {
+                background-color: navajowhite;
+            }
+</style>
+
+<ul>
+    <li>@Html.ActionLink("Home", "Index")</li>
+    <li>@Html.ActionLink("Order", "../Order/Order")</li>
+    <li>@Html.ActionLink("Cart", "../Order/Cart")</li>
+    <li>@Html.ActionLink("Contact Us", "Contact")</li>
+    <li>@Html.ActionLink("Login", "Login")</li>
+
+</ul>
+<h2>Signup</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.username, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.username, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.username, "This field is Required", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.password, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.password, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.password, "This field required", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Sign Up" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+

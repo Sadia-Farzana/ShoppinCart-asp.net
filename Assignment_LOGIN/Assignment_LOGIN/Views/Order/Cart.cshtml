@@ -1,0 +1,132 @@
+﻿@model IEnumerable<Assignment_LOGIN.Models.ViewModels.CartViewModel>
+@{
+    ViewBag.Title = "Cart";
+    decimal Totalamount = 0.0M;
+
+    if (Session["userno"] == null)
+    {
+        Response.Redirect("../Home/Login");
+    }
+}
+
+<style>
+    ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: dimgrey;
+    }
+
+    li {
+        float: left;
+    }
+
+        li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 16px 18px;
+            text-decoration: solid;
+        }
+
+            li a:hover {
+                background-color: navajowhite;
+            }
+
+    .img {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 100%;
+    }
+</style>
+
+<ul>
+
+    <li>@Html.ActionLink("Home", "../Home/Index")</li>
+    <li>@Html.ActionLink("Order", "../Order/Order")</li>
+    <li>
+        @if (Session["CartCounter"] == null)
+        {
+            @Html.ActionLink("Cart", actionName: "Cart", routeValues: "Order", htmlAttributes: new { id = "CartItem" })
+
+        }
+
+        else
+        {
+
+            @Html.ActionLink("Cart(" + Session["CartCounter"] + ")", actionName: "Cart", routeValues: "Order", htmlAttributes: new { id = "CartItem" })
+
+        }
+    </li>
+
+    <li>@Html.ActionLink("Contact Us", "../Home/Contact")</li>
+    <li>@Html.ActionLink("Log out", "../Home/Logout")</li>
+
+
+</ul>
+
+<img class="img" src="~/Content/Images/banner.jpg" alt="Halloween" />
+
+<h2>Cart</h2>
+
+
+<table class="table" border="1">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ImageFile)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ShortDescription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UnitPrice)
+        </th>
+
+
+        <th>
+            @Html.DisplayNameFor(model => model.Quantity)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.LongDescription)
+        </th>
+
+    </tr>
+    @foreach (var item in Model)
+    {
+
+        <tr>
+            <td>
+                <img src="~/Content/Images/Products/@item.ImageFile" />
+            </td>
+            <td>
+                @item.Name
+            </td>
+            <td>
+                @item.ShortDescription
+            </td>
+            <td>
+                @item.UnitPrice
+            </td>
+
+            <td>
+                @item.Quantity
+            </td>
+            <td>
+                @item.LongDescription
+            </td>
+        </tr>
+        Totalamount += item.Total;
+    }
+</table>
+<div>
+    <h3>Total Amount :   @Totalamount.ToString()</h3>
+</div>
+
+
+
