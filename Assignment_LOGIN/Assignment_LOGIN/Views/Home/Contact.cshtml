@@ -3,6 +3,17 @@
 @{
     ViewBag.Title = "Contact";
 }
+
+@{
+    if (Session["userno"] != null)
+    {
+        <ul>
+            <li style="float:right;font-size:20px;color:aliceblue; padding: 0px 18px;">@Session["username"]</li>
+        </ul>
+
+    }
+}
+
 <style>
     ul {
         list-style-type: none;
@@ -22,6 +33,7 @@
             text-align: center;
             padding: 16px 18px;
             text-decoration: none;
+            font-size: 19px;
         }
 
             li a:hover {
@@ -57,7 +69,6 @@
     <li>@Html.ActionLink("Cart", "../Order/Cart")</li>
     <li>@Html.ActionLink("Contact Us", "Contact")</li>
     <li>@Html.ActionLink("Sign up", "Signup")</li>
-    <li>@Html.ActionLink("Login", "Login")</li>
 
 
 </ul>
@@ -67,18 +78,19 @@
 <img id="img" src="~/Content/Images/banner.jpg" alt="Halloween" />
 
 <div class="center">
-    <h1>Contact Us</h1>
+    <h2 style="font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif">Contact Us</h2>
     <p>Email: @Model.Email</p>
     <p>Phone: @Model.Phone</p>
     <p>Fax: @Model.Fax</p>
     <p>Address: @Model.Address</p>
 
-    
-        <p>       @foreach (string url in Model.SocialMediaUrls )
-                {
-                    <a href="@url" target="blank">@url</a>
-                }
-        </p>
+
+    <p>
+        @foreach (string url in Model.SocialMediaUrls)
+        {
+            <a href="@url" target="blank">@url</a>
+        }
+    </p>
 </div>
 
 <footer>

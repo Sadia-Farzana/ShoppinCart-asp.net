@@ -55,12 +55,13 @@ namespace Assignment_LOGIN.Controllers
             if(logins == null)
             {
                 log.ErrorMessage = "Username or Password is incorrect";
-
+               
 
                 return View("Login", log);
             }
             else
             {
+                Session["username"] = logins.username;
                 Session["userno"] = logins.userno;
                 return RedirectToAction("Order", "Order");
             }
